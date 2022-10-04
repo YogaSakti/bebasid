@@ -34,5 +34,6 @@ jobs:
         ./dev/scripts/yusub $HOST >> $HOST
     - name: get ip from subdomain list
       run: | 
+        cd dev/scripts/
         echo $HOST | python scan.py
         cat "host-${HOST}"
