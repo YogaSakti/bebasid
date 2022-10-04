@@ -31,9 +31,9 @@ jobs:
         chmod +x $GITHUB_WORKSPACE/dev/scripts/yusub
     - name: extract subdomain
       run: |
-        ./dev/scripts/yusub $HOST >> $HOST
+        cd dev/scripts/
+        ./yusub $HOST >> $HOST
     - name: get ip from subdomain list
       run: | 
-        cd dev/scripts/
         echo $HOST | python scan.py
         cat "host-${HOST}"
