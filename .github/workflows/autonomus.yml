@@ -13,10 +13,8 @@ jobs:
     - name: View issue information
       run: |
         echo "Issue title: ${{ github.event.issue.title }}"
-      env:
-        tittle: ${{ github.event.issue.title }}
     - name: Get and Set Host Url
       run: |
-        HOST=$(cut -d " " -f2 <<< ${tittle})
+        HOST=$(cut -d " " -f2 <<< ${ github.event.issue.title })
         echo "HOST=${HOST}" >> $GITHUB_ENV
         echo "set host to ${HOST}"
