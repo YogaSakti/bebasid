@@ -1,0 +1,22 @@
+name: Autonomus
+on:
+  issues:
+    types:
+      - labeled
+
+jobs:
+  build:
+    if: github.event.label.name == 'autonomus'
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: View issue information
+      run: |
+        echo "Issue title: ${{ github.event.issue.title }}"
+      env:
+        tittle: ${{ github.event.issue.title }}
+    - name: Get and Set Host Url
+      run: |
+        HOST=cut -d " " -f2 <<< ${tittle}
+        echo "HOST=${HOST}" >> $GITHUB_ENV
+        echo "set host to ${HOST}"
