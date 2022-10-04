@@ -32,7 +32,8 @@ jobs:
     - name: extract subdomain
       run: |
         cd dev/scripts/
-        ./yusub $HOST >> $HOST
+        sudo chmod +x yusub && ./yusub $HOST >> $HOST
+        cat $HOST
     - name: get ip from subdomain list
       run: | 
         cd dev/scripts/
